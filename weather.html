@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Weather</title>
+    <div>
+    <input id="main" type="text" placeholder="enter city">
+    <input id="btn" type="button" value="Submit">
+    <div>
+        <div id="city"></div>
+        <div id="temperature"></div>
+        <div id="information"></div>
+        <div id="wind"></div>
+    </div>
+</div>
+</head>
+<body>
+    <script>
+
+       var a1=document.getElementById("city")
+        var a2=document.getElementById("temperature")
+        var a3=document.getElementById("information")
+        var a4=document.getElementById("wind")
+        var a5=document.getElementById("main").value
+        var a6=document.getElementById("btn")
+        
+
+        a6.addEventListener("click",()=>{
+
+            var apikey="454bc5a5257f05b76490cf581be01775"
+
+
+            fetch('https://api.openweathermap.org/data/2.5/weather?q='+a5+'&appid='+apikey)
+           
+            .then(data => {
+                let city=data['name']
+                a1.innerHTML=`weather of ${city}'
+                let temp=data['main'['temp']
+                a2.innerHTML=`temperature : ${temp} C`
+                let info=data['weather']['0']['description']
+                a3.innerHTML=`sky condition : ${info}'
+                let windspeed=data['wind'][`speed`]
+                a4.innerHTML=`wind speed : ${windspeed}km/hr`
+        
+        })
+    })
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
+ -->
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+</head> 
+<body> 
+<div> 
+    <input type="text" placeholder="Enter city name.." id="input" > 
+    <input type="button" value="Submit" id="btn" > 
+ 
+    <div> 
+        <div id="city"></div> 
+        <div id="temp"></div> 
+        <div id="info"></div> 
+        <div id="wind"></div> 
+    </div> 
+ 
+</div> 
+ 
+<script> 
+ 
+    const a1=document.querySelector("#input") 
+    const a2=document.querySelector("#btn") 
+    const a3=document.querySelector("#city") 
+    const a4=document.querySelector("#temp") 
+    const a5=document.querySelector("#info") 
+    const a6=document.querySelector("#wind") 
+ 
+    function convert(value){ 
+        return (value-273) 
+ 
+    } 
+ 
+    a2.addEventListener("click",()=>{ 
+ 
+ 
+let apik="88c97680a87296b25074ec786c3d9ad8" 
+ 
+ 
+        fetch('https://api.openweathermap.org/data/2.5/weather?q='+a1.value+'&appid='+apik) 
+  .then(response => response.json()) 
+  .then(data => { 
+    var city=data['name'] 
+    a3.innerHTML=`weather of ${city}` 
+    var temperatre=data['main']['temp'] 
+    a4.innerHTML=`Temparature : ${Math.round(convert(temperatre))} °c` 
+    var information=data['weather']['0']['description'] 
+    a5.innerHTML=`Sky Conditions: ${information}` 
+    var windspeed =data['wind']['speed'] 
+    a6.innerHTML=`Wind speed: ${windspeed} km/h ` 
+ 
+ 
+  }) 
+    }) 
+ 
+ 
+ 
+ 
+ 
+ 
+</script> 
+     
+</body> 
+</html>
